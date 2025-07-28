@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zenzix Sarees - Elegance Redefined</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&family=Cinzel+Decorative:wght@700&display=swap');
+        
+        :root {
+            --primary: #6b21a8; /* Updated to purple */
+            --secondary: #38b2ac; /* Updated to teal */
+            --accent: #4c1d95; /* Darker purple shade */
+            --light: #f3e8ff; /* Light purple background */
+            --dark: #2d1b4e; /* Deep purple for text */
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+        }
+        
+        .brand-font {
+            font-family: 'Cinzel Decorative', serif; /* Elegant font for brand */
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, rgba(107,33,168,0.8) 0%, rgba(56,178,172,0.8) 100%), 
+                        url('https://placehold.co/1920x1080') no-repeat center center;
+            background-size: cover;
+            height: 80vh;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+        
+        .secondary-gradient {
+            background: linear-gradient(135deg, var(--secondary) 0%, #e0f7fa 100%);
+        }
+        
+        .product-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            animation: float 3s ease-in-out infinite;
+        }
+                @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            animation: none;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        
+        .testimonial-card {
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(10px);
+        }
+        
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .footer-link {
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .btn-hover {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-hover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.4s ease;
+        }
+        
+        .btn-hover:hover::before {
+            left: 100%;
+        }
+        
+        /* Modal Styles */
+        #dashboard-modal {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        #dashboard-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+        }
+        
+        #dashboard-modal .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(107,33,168,0.7) 0%, rgba(56,178,172,0.7) 100%); /* Gradient overlay */
+            z-index: 998;
+        }
+        
+        #dashboard-modal .modal-content {
+            position: relative;
+            background: linear-gradient(135deg, #f3e8ff 0%, #e0f7fa 100%); /* Light gradient background */
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            z-index: 999;
+            transform: translateY(50px);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                height: 60vh;
+            }
+            
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 24px;
+            }
+            
+            #dashboard-modal .modal-content {
+                width: 95%;
+                max-height: 90vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <a href="#home" class="text-primary hover:text-accent flex items-center space-x-2 font-bold nav-link">
+                            <span class="brand-font text-2xl font-bold">ZENZIX</span>
+                        </a>
+                    </div>
+                    <div class="hidden md:ml-6 md:flex md:space-x-8">
+                        <a href="#home" class="border-primary text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium nav-link">Home</a>
+                        <a href="#collections" class="border-transparent text-gray-500 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium nav-link">Collections</a>
+                        <a href="#new-arrivals" class="border-transparent text-gray-500 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium nav-link">New Arrivals</a>
+                        <a href="#about" class="border-transparent text-gray-500 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium nav-link">About Us</a>
+                        <a href="#reviews" class="border-transparent text-gray-500 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium nav-link">Reviews</a>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <button type="" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white gradient-bg btn-hover">
+                            <span>Login</span>
+                        </button>
+                    </div>
+                    <div class="ml-4 flex items-center md:ml-6">
+                        <button id="login-btn"  class="p-1 rounded-full text-gray-400 hover:text-primary focus:outline-none">
+                            <span class="sr-only">View cart</span>
+                            <i class="fas fa-shopping-cart"></i>
+                        </button>
+                        <div class="ml-4 relative">
+                            <div>
+                                <button type="button" class="max-w-xs rounded-full flex items-center text-sm focus:outline-none" id="user-menu">
+                                    <span class="sr-only">Open user menu</span>
+                                    <img class="h-8 w-8 rounded-full" src="https://placehold.co/100" alt="User profile picture with neutral expression" />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div class="md:hidden" id="mobile-menu">
+        <div class="pt-2 pb-3 space-y-1">
+            <a href="#home" class="bg-primary border-primary text-white block pl-3 pr-4 py-2 border-l-4 text-base font-medium nav-link">Home</a>
+            <a href="#collections" class="border-transparent text-gray-500 hover:bg-gray-50 block pl-3 pr-4 py-2 border-l-4 text-base font-medium nav-link">Collections</a>
+            <a href="#new-arrivals" class="border-transparent text-gray-500 hover:bg-gray-50 block pl-3 pr-4 py-2 border-l-4 text-base font-medium nav-link">New Arrivals</a>
+            <a href="#about" class="border-transparent text-gray-500 hover:bg-gray-50 block pl-3 pr-4 py-2 border-l-4 text-base font-medium nav-link">About Us</a>
+            <a href="#reviews" class="border-transparent text-gray-500 hover:bg-gray-50 block pl-3 pr-4 py-2 border-l-4 text-base font-medium nav-link">Reviews</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero-section flex items-center justify-center" id="home">
+        <div class="text-center px-6">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-4 brand-font">Embrace Your Elegance</h1>
+            <p class="text-xl md:text-2xl text-white mb-8">Premium handwoven sarees from the finest fabrics</p>
+            <a href="#collections" class="px-8 py-3 bg-white text-primary font-bold rounded btn-hover shop-now-btn">Shop Now</a>
+        </div>
+    </div>
+
+    <!-- Collections Section -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8" id="collections">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4 brand-font">Our Collections</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Explore our carefully curated saree collections that blend tradition with contemporary fashion</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                <!-- Collection 1 -->
+                <div class="group relative rounded-lg overflow-hidden shadow-lg product-card">
+                    <img src="https://placehold.co/600x800" alt="Banarasi silk saree collection with golden zari work on deep red fabric displayed elegantly" class="w-full h-80 object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-6 opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div>
+                            <h3 class="text-white text-xl font-bold mb-2">Banarasi Silk</h3>
+                            <a href="#" class="text-white border-b border-white hover:border-transparent nav-link">Explore Collection</a>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-900">Banarasi Silk</h3>
+                        <p class="text-gray-600">Handwoven with pure silk and zari</p>
+                    </div>
+                </div>
+                
+                <!-- Collection 2 -->
+                <div class="group relative rounded-lg overflow-hidden shadow-lg product-card">
+                    <img src="https://placehold.co/600x800" alt="Kanjivaram saree collection featuring vibrant colors and traditional temple border designs" class="w-full h-80 object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-6 opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div>
+                            <h3 class="text-white text-xl font-bold mb-2">Kanjivaram</h3>
+                            <a href="#" class="text-white border-b border-white hover:border-transparent nav-link">Explore Collection</a>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-900">Kanjivaram</h3>
+                        <p class="text-gray-600">Traditional South Indian silk sarees</p>
+                    </div>
+                </div>
+                
+                <!-- Collection 3 -->
+                <div class="group relative rounded-lg overflow-hidden shadow-lg product-card">
+                    <img src="https://placehold.co/600x800" alt="Chiffon saree collection in pastel colors with delicate embroidery work and flowing fabric" class="w-full h-80 object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-6 opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div>
+                            <h3 class="text-white text-xl font-bold mb-2">Chiffon</h3>
+                            <a href="#" class="text-white border-b border-white hover:border-transparent nav-link">Explore Collection</a>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-900">Chiffon</h3>
+                        <p class="text-gray-600">Lightweight and elegant for any occasion</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <a href="#" class="inline-block px-6 py-3 border border-primary text-primary font-medium rounded-md btn-hover">View All Collections</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Arrivals -->
+    <section class="py-16 secondary-gradient" id="new-arrivals">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4 brand-font">New Arrivals</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Discover our latest collection of sarees exclusively designed for you</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Product 1 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="relative">
+                        <img src="https://placehold.co/500x700" alt="Royal blue silk saree with intricate silver zari work and peacock motif border" class="w-full h-80 object-cover">
+                        <div class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">NEW</div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-900">Royal Blue Banarasi</h3>
+                        <div class="flex items-center mt-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm ml-2">(24)</span>
+                        </div>
+                        <div class="mt-3 flex justify-between items-center">
+                            <span class="text-primary font-bold">₹4,999</span>
+                            <button class="text-primary hover:text-accent">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                        <button class="mt-3 w-full bg-primary text-white py-2 rounded btn-hover add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="relative">
+                        <img src="https://placehold.co/500x700" alt="Soft peach georgette saree with golden embroidery and delicate floral patterns" class="w-full h-80 object-cover">
+                        <div class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">NEW</div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-900">Peach Georgette</h3>
+                        <div class="flex items-center mt-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm ml-2">(18)</span>
+                        </div>
+                        <div class="mt-3 flex justify-between items-center">
+                            <span class="text-primary font-bold">₹3,499</span>
+                            <button class="text-primary hover:text-accent">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                        <button class="mt-3 w-full bg-primary text-white py-2 rounded btn-hover add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="relative">
+                        <img src="https://placehold.co/500x700" alt="Deep maroon Kanjivaram saree with contrasting green border and golden temple motifs" class="w-full h-80 object-cover">
+                        <div class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">NEW</div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-900">Maroon Kanjivaram</h3>
+                        <div class="flex items-center mt-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm ml-2">(32)</span>
+                        </div>
+                        <div class="mt-3 flex justify-between items-center">
+                            <span class="text-primary font-bold">₹5,999</span>
+                            <button class="text-primary hover:text-accent">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                        <button class="mt-3 w-full bg-primary text-white py-2 rounded btn-hover add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="relative">
+                        <img src="https://placehold.co/500x700" alt="Ivory white pure cotton saree with blue hand-block prints and traditional designs" class="w-full h-80 object-cover">
+                        <div class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">NEW</div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-900">Cotton Handblock</h3>
+                        <div class="flex items-center mt-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm ml-2">(12)</span>
+                        </div>
+                        <div class="mt-3 flex justify-between items-center">
+                            <span class="text-primary font-bold">₹2,799</span>
+                            <button class="text-primary hover:text-accent">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                        <button class="mt-3 w-full bg-primary text-white py-2 rounded btn-hover add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Reviews -->
+    <section class="py-16 bg-white" id="reviews">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4 brand-font">What Our Customers Say</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Hear from women who have experienced the elegance of Zenzix sarees</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="testimonial-card p-6 rounded-lg shadow-lg border border-gray-100">
+                    <div class="flex items-center mb-4">
+                        <img class="w-12 h-12 rounded-full" src="https://placehold.co/100" alt="Smiling woman in her 30s wearing a pink saree against a neutral background" />
+                        <div class="ml-4">
+                            <h4 class="text-lg font-semibold">Priya Sharma</h4>
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"The Banarasi silk saree I purchased from Zenzix exceeded my expectations. The craftsmanship is exquisite and the fabric quality is superb. Received so many compliments at my sister's wedding!"</p>
+                    <div class="mt-4 text-sm text-gray-500">Posted on 12 May 2023</div>
+                </div>
+                
+                <!-- Review 2 -->
+                <div class="testimonial-card p-6 rounded-lg shadow-lg border border-gray-100">
+                    <div class="flex items-center mb-4">
+                        <img class="w-12 h-12 rounded-full" src="https://placehold.co/100" alt="Professional woman in her 40s wearing elegant blue saree and smiling at the camera" />
+                        <div class="ml-4">
+                            <h4 class="text-lg font-semibold">Meena Patel</h4>
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"As someone who wears sarees daily for work, I appreciate the lightweight comfort of Zenzix's cotton collection. Their unique designs help me maintain a professional yet stylish look."</p>
+                    <div class="mt-4 text-sm text-gray-500">Posted on 28 Apr 2023</div>
+                </div>
+                
+                <!-- Review 3 -->
+                <div class="testimonial-card p-6 rounded-lg shadow-lg border border-gray-100">
+                    <div class="flex items-center mb-4">
+                        <img class="w-12 h-12 rounded-full" src="https://placehold.co/100" alt="Young woman in traditional bridal saree smiling shyly with hands folded" />
+                        <div class="ml-4">
+                            <h4 class="text-lg font-semibold">Ananya Reddy</h4>
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Zenzix made my wedding shopping so special! Their team helped me select the perfect Kanjivaram saree that matched my wedding theme. The attention to detail in their products is remarkable."</p>
+                    <div class="mt-4 text-sm text-gray-500">Posted on 15 Apr 2023</div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <button class="px-6 py-3 bg-white border border-primary text-primary font-medium rounded-md btn-hover">See More Reviews</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Sellers -->
+    <section class="py-16 gradient-bg" id="best-sellers">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-white mb-4 brand-font">Best Sellers</h2>
+                <p class="text-white max-w-2xl mx-auto">Our customers' most loved sarees that never go out of style</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <!-- Product 1 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="relative">
+                        <img src="https://placehold.co/500x700" alt="Red and gold tissue silk saree with intricate weaving and traditional motifs" class="w-full h-80 object-cover">
+                        <div class="absolute top-2 left-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">BESTSELLER</div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-900">Red Tissue Silk</h3>
+                        <div class="flex items-center mt-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm ml-2">(47)</span>
+                        </div>
+                        <div class="mt-3 flex justify-between items-center">
+                            <span class="text-primary font-bold">₹6,499</span>
+                            <button class="text-primary hover:text-accent">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                        <button class="mt-3 w-full bg-primary text-white py-2 rounded btn-hover add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="relative">
+                        <img src="https://placehold.co/500x700" alt="Black chiffon saree with golden paisley prints and elegant border design" class="w-full h-80 object-cover">
+                        <div class="absolute top-2 left-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">BESTSELLER</div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-900">Black Chiffon</h3>
+                        <div class="flex items-center mt-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm ml-2">(52)</span>
+                        </div>
+                        <div class="mt-3 flex justify-between items-center">
+                            <span class="text-primary font-bold">₹4,299</span>
+                            <button class="text-primary hover:text-accent">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                        <button class="mt-3 w-full bg-primary text-white py-2 rounded btn-hover add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="relative">
+                        <img src="https://placehold.co/500x700" alt="Mustard yellow cotton silk saree with hand-painted floral designs" class="w-full h-80 object-cover">
+                        <div class="absolute top-2 left-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">BESTSELLER</div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-900">Mustard Cotton Silk</h3>
+                        <div class="flex items-center mt-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm ml-2">(38)</span>
+                        </div>
+                        <div class="mt-3 flex justify-between items-center">
+                            <span class="text-primary font-bold">₹3,899</span>
+                            <button class="text-primary hover:text-accent">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                        <button class="mt-3 w-full bg-primary text-white py-2 rounded btn-hover add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="relative">
+                        <img src="https://placehold.co/500x700" alt="Pink and silver organza saree with delicate embroidery and sheer fabric" class="w-full h-80 object-cover">
+                        <div class="absolute top-2 left-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">BESTSELLER</div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-900">Pink Organza</h3>
+                        <div class="flex items-center mt-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm ml-2">(41)</span>
+                        </div>
+                        <div class="mt-3 flex justify-between items-center">
+                            <span class="text-primary font-bold">₹5,499</span>
+                            <button class="text-primary hover:text-accent">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                        <button class="mt-3 w-full bg-primary text-white py-2 rounded btn-hover add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us -->
+    <section class="py-16 bg-white" id="about">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-12">
+                <div class="mb-8 lg:mb-0">
+                    <img src="https://placehold.co/800x600" alt="Zenzix founder displaying a collection of handwoven sarees in a bright studio with wooden shelves" class="rounded-lg shadow-lg w-full">
+                </div>
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6 brand-font">Our Story</h2>
+                    <p class="text-gray-600 mb-4">Zenzix Sarees was born from our passion to preserve the rich heritage of Indian handloom while adding a contemporary touch. We collaborate directly with weavers across India to bring you authentic, high-quality sarees that tell a story.</p>
+                    <p class="text-gray-600 mb-6">Each Zenzix saree is carefully handpicked or exclusively designed to ensure you get the finest craftsmanship, premium fabrics, and designs that blend tradition with modern aesthetics.</p>
+                    
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Why Choose Us?</h3>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span class="text-gray-600">Direct collaboration with artisans ensuring fair wages</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span class="text-gray-600">100% authentic handwoven fabrics</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span class="text-gray-600">Quality assurance on every product</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span class="text-gray-600">Easy return and exchange policy</span>
+                        </li>
+                    </ul>
+                    
+                    <button class="px-6 py-3 gradient-bg text-white font-medium rounded-md btn-hover">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Section -->
+    <section class="py-16 secondary-gradient">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4 brand-font">Follow Us on Instagram</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto mb-6">Tag us @zenzixsarees to be featured</p>
+                <a href="https://instagram.com/zenzixsarees" target="_blank" class="inline-flex items-center px-6 py-3 bg-primary text-white font-medium rounded-md btn-hover">
+                    <i class="fab fa-instagram mr-2"></i> Follow @zenzixsarees
+                </a>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div>
+                    <img src="https://placehold.co/400x400" alt="Customer wearing navy blue Zenzix saree posing near beach at sunset" class="w-full h-full object-cover rounded-lg shadow-md cursor-pointer instagram-img">
+                </div>
+                <div>
+                    <img src="https://placehold.co/400x400" alt="Close-up of golden zari work on red Banarasi saree displayed on mannequin" class="w-full h-full object-cover rounded-lg shadow-md cursor-pointer instagram-img">
+                </div>
+                <div>
+                    <img src="https://placehold.co/400x400" alt="Bridal customer in red Kanjivaram saree with traditional jewelry smiling" class="w-full h-full object-cover rounded-lg shadow-md cursor-pointer instagram-img">
+                </div>
+                <div>
+                    <img src="https://placehold.co/400x400" alt="Flatlay of three different Zenzix sarees arranged artistically with flowers" class="w-full h-full object-cover rounded-lg shadow-md cursor-pointer instagram-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-16 gradient-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold text-white mb-4 brand-font">Stay Updated</h2>
+                <p class="text-white max-w-2xl mx-auto mb-8">Subscribe to our newsletter for exclusive offers, new arrivals, and saree styling tips</p>
+                
+                <form class="max-w-md mx-auto">
+                    <div class="flex">
+                        <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-l focus:outline-none">
+                        <button type="submit" class="bg-accent text-white px-6 py-3 rounded-r btn-hover">Subscribe</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/919876543210?text=Hi%20Zenzix%2C%20I%20want%20to%20place%20an%20order" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Dashboard Modal -->
+    <div id="dashboard-modal" class="fixed inset-0 z-50">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button id="close-dashboard" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+            
+            <div class="p-6">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6 brand-font">My Dashboard</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+                    <div class="bg-white p-4 rounded-lg dashboard-stat shadow-md">
+                        <h3 class="text-gray-500 text-sm font-medium">Orders</h3>
+                        <p class="text-2xl font-bold text-primary">5</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg dashboard-stat shadow-md">
+                        <h3 class="text-gray-500 text-sm font-medium">Wishlist</h3>
+                        <p class="text-2xl font-bold text-primary">12</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg dashboard-stat shadow-md">
+                        <h3 class="text-gray-500 text-sm font-medium">Wallet</h3>
+                        <p class="text-2xl font-bold text-primary">₹500</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg dashboard-stat shadow-md">
+                        <h3 class="text-gray-500 text-sm font-medium">Coupons</h3>
+                        <p class="text-2xl font-bold text-primary">2</p>
+                    </div>
+                </div>
+                
+                <div class="mb-8">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4 brand-font">Recent Orders</h3>
+                    <div class="bg-white border rounded-lg overflow-hidden shadow-md">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Order #</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Items</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-primary">ZNX-4567</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">12 May 2023</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">₹9,498</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-green-500 font-medium">Delivered</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-primary">ZNX-3982</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">28 Apr 2023</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">1</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">₹5,999</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-yellow-500 font-medium">Shipped</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-primary">ZNX-1234</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">15 Mar 2023</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">3</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">₹12,000</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-red-500 font-medium">Cancelled</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-lg font-bold brand-font">Zenzix Sarees</h3>
+                    <p class="mt-2">Embrace your elegance with our exquisite collection of handwoven sarees.</p>
+                </div>
+                <div class="flex flex-col">
+                    <h4 class="font-semibold">Quick Links</h4>
+                    <a href="#collections" class="mt-2 footer-link nav-link">Collections</a>
+                    <a href="#new-arrivals" class="mt-2 footer-link nav-link">New Arrivals</a>
+                    <a href="#about" class="mt-2 footer-link nav-link">About Us</a>
+                    <a href="#reviews" class="mt-2 footer-link nav-link">Reviews</a>
+                </div>
+                <div class="flex flex-col">
+                    <h4 class="font-semibold">Follow Us</h4>
+                    <div class="flex space-x-4 mt-2">
+                        <a href="https://facebook.com" target="_blank" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://instagram.com/zenzixsarees" target="_blank" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://twitter.com" target="_blank" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://pinterest.com" target="_blank" class="social-icon">
+                            <i class="fab fa-pinterest"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 text-center">
+                <p class="text-sm">© 2025 Zenzix Sarees. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a.nav-link').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    anime({
+                        targets: 'html, body',
+                        scrollTop: targetElement.offsetTop,
+                        duration: 800,
+                        easing: 'easeInOutQuad'
+                    });
+                }
+            });
+        });
+
+        // Anime.js hover effects for product cards
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                anime({
+                    targets: card,
+                    scale: 1.05,
+                    translateY: -10,
+                    duration: 300,
+                    easing: 'easeOutQuad'
+                });
+            });
+            card.addEventListener('mouseleave', () => {
+                anime({
+                    targets: card,
+                    scale: 1,
+                    translateY: 0,
+                    duration: 300,
+                    easing: 'easeOutQuad'
+                });
+            });
+        });
+
+        // Anime.js hover effects for buttons
+        document.querySelectorAll('.btn-hover').forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                anime({
+                    targets: button,
+                    scale: 1.05,
+                    duration: 200,
+                    easing: 'easeOutQuad'
+                });
+            });
+            button.addEventListener('mouseleave', () => {
+                anime({
+                    targets: button,
+                    scale: 1,
+                    duration: 200,
+                    easing: 'easeOutQuad'
+                });
+            });
+        });
+
+        // Anime.js hover effects for social icons
+        document.querySelectorAll('.social-icon').forEach(icon => {
+            icon.addEventListener('mouseenter', () => {
+                anime({
+                    targets: icon,
+                    translateY: -5,
+                    scale: 1.1,
+                    duration: 200,
+                    easing: 'easeOutQuad'
+                });
+            });
+            icon.addEventListener('mouseleave', () => {
+                anime({
+                    targets: icon,
+                    translateY: 0,
+                    scale: 1,
+                    duration: 200,
+                    easing: 'easeOutQuad'
+                });
+            });
+        });
+
+        // Anime.js hover effects for Instagram images
+        document.querySelectorAll('.instagram-img').forEach(img => {
+            img.addEventListener('mouseenter', () => {
+                anime({
+                    targets: img,
+                    scale: 1.1,
+                    opacity: 0.9,
+                    duration: 300,
+                    easing: 'easeOutQuad'
+                });
+            });
+            img.addEventListener('mouseleave', () => {
+                anime({
+                    targets: img,
+                    scale: 1,
+                    opacity: 1,
+                    duration: 300,
+                    easing: 'easeOutQuad'
+                });
+            });
+        });
+
+        // Anime.js animation for dashboard modal
+        const loginBtn = document.getElementById('login-btn');
+        const dashboardModal = document.getElementById('dashboard-modal');
+        const closeDashboard = document.getElementById('close-dashboard');
+
+        loginBtn.addEventListener('click', () => {
+            dashboardModal.classList.add('active');
+            anime({
+                targets: dashboardModal,
+                opacity: [0, 1],
+                duration: 400,
+                easing: 'easeOutQuad'
+            });
+            anime({
+                targets: dashboardModal.querySelector('.modal-content'),
+                translateY: [50, 0],
+                opacity: [0, 1],
+                duration: 500,
+                easing: 'easeOutQuad'
+            });
+        });
+
+        closeDashboard.addEventListener('click', () => {
+            anime({
+                targets: dashboardModal.querySelector('.modal-content'),
+                translateY: [0, 50],
+                opacity: [1, 0],
+                duration: 400,
+                easing: 'easeOutQuad'
+            });
+            anime({
+                targets: dashboardModal,
+                opacity: [1, 0],
+                duration: 400,
+                easing: 'easeOutQuad',
+                complete: () => {
+                    dashboardModal.classList.remove('active');
+                }
+            });
+        });
+
+        // Anime.js animation for dashboard stats
+        document.querySelectorAll('.dashboard-stat').forEach(stat => {
+            stat.addEventListener('mouseenter', () => {
+                anime({
+                    targets: stat,
+                    scale: 1.05,
+                    duration: 200,
+                    easing: 'easeOutQuad'
+                });
+            });
+            stat.addEventListener('mouseleave', () => {
+                anime({
+                    targets: stat,
+                    scale: 1,
+                    duration: 200,
+                    easing: 'easeOutQuad'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
